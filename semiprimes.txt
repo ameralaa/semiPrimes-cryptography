@@ -1,0 +1,167 @@
+Title: A Dual Approach to Divisor-Free Number Generation and Custom Function-Based Cryptography
+-----------------------------------------------------------------------------------------------
+
+Abstract
+This document introduces two innovative concepts:
+-------------------------------------------------
+
+A method for generating sequences of numbers that exclude all values divisible by a given number or list of numbers, without using division or modulo operations — implemented using multiple algorithmic approaches.
+
+A novel framework for cryptography that moves away from standard mathematical functions such as RSA's p * q = m, and instead enables users to define custom encryption architectures based on multiple secret seeds and non-standard functions. This approach offers enhanced flexibility, obfuscation, and potential post-quantum resistance.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+Part I: Division-Free Number Exclusion Logic
+1. Introduction
+In classical number theory and computer science, filtering out numbers divisible by a given integer (or list) typically requires the use of division or modulo operations. However, division is a costly operation in low-level systems and may leak side-channel timing data in cryptographic environments.
+
+This section explores an alternative strategy: generating such filtered sequences using pure arithmetic or logical constructions that avoid division entirely — both horizontally (in 1D sequences) and vertically (in 2D matrix/grid generation).
+
+2. Problem Definition
+Given:
+
+A range of integers [start, end]
+A list of divisors D = [d1, d2, ..., dn]
+Goal:
+
+Generate all values x within the range where ∀di ∈ D, x % di ≠ 0, but without using % or / in the filtering process.
+3. Motivation and Applications
+Cryptographic applications where operations must avoid division/modulo.
+Performance optimization on systems without floating-point units (FPUs).
+Functional programming and theoretical computing constraints.
+Obfuscated logic for tamper-resistant data generation.
+
+4. Methodologies
+there are 3 methods that can generate different values with same concept 
+
+let X : is a generated number 
+let Me : is an even integer multiplier 
+let Mo : is an odd integer multiplier
+let Ce : is a constant for even multiplier (1) to generate odd (2) to generate even
+let Co : is a constant for odd multiplier (2) (to generate odd (1) to generate even 
+let Lcm : is a lcm for list of numbers or only 1 number like 3 or 15 for 3 and 5 
+let P : is integer power 
+
+--------------------------------------------------------------------------------------
+
+First method :
+so the main function for 2D generation is : f(x) = Me * Lcm + Ce  or f(x) = Mo * Lcm + co 
+examples: generate odd numbers that not divisble by 3 and 5 so the lcm is 15 
+then f(x) = 1 * 15 + 2 = 17 , 2 * 15 + 1 = 31 , 3 * 15 + 2 = 47 etc all generated values will not divided by 3 or 5 .
+
+----------------------------------------------------------------------------------------------------------------------
+
+Second method :
+when ce and co is 1 and 2 as constants we can generate 1D from same formula using powers of 2 with odd multipliers only because even will take constant 1 so no powers 
+like example f(x) = 1 * 15 + 2^1 = 17 , 1 * 15 + 2^2 = 19 , 1 * 15 + 2^3 = 23, etc so multiplier can be any odd integer number and all results will not divided by 3 or 5 .
+
+----------------------------------------------------------------------------------------------------------------------
+
+Third method :
+if we want to use even multiplier with another constant not 1 we can search about odd number that bigger or smaller than lcm and not divided by 3 or 5 like example 7 and its powers 
+like example f(x) = 2 * 15 + 7^1 = 37 , 2 * 15 + 7^2 = 79 etc and the amazing thing in this formula that the generated numbers will not divided by 3 , 5 and 7 
+so we can put general formula from this f(x) = (prime1)^p + (prime2)^p 
+the conditions of this formula that one of hands must be even to get x odd numbers and prime cant be common in 2 sides 
+like example f(x) = (3 * 7)^1 + (7 * 5 )^1 = 56 which is even and divided by 7 that is a common factor this not right formula for numbers that not divided by but will be right formula for numbers that divided by the common factor
+right formula for non divided numbers ==> f(x) = (2 * 3 )^1 + (5 * 7)^1 = 41 this right formula and will generate always odd numbers that not divided by 3,5 and 7 
+or we can make all odd but bases or hands must be odd and numbers can be common but not for all hands like example 
+f(x) = (3*5)^1+(3*7)^1+(7*11)^1 = 113 which is not divided by 3 , 5 , 7 , 11 and as shown we dont have 2 or even numbers and 3 common in first 2 bases and 7 common on last 2 bases 
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+I: Custom Function-Based Seed-Driven Cryptography
+1. Introduction
+Conventional public-key cryptography (e.g., RSA) depends on the hardness of factoring large integers, using known and shared equations such as m = p * q. While effective, this approach:
+
+Is predictable in its functional form.
+Depends heavily on large key sizes for security.
+Is potentially vulnerable to quantum algorithms.
+This paper introduces a user-defined encryption architecture, where each participant defines their own mathematical function structure and uses multiple private seed values. The encryption and decryption are only possible when both the correct seeds and the functional structure are known.
+
+2. Motivation
+Unpredictability: No standardized function to reverse-engineer.
+Seed-level Security: More than one seed adds multiple entropy sources.
+Quantum Resistance Potential: Avoids classical algebraic structures.
+Function Diversity: No two users need to share the same encryption logic.
+3. Standard Encryption vs. Seed-Based Architecture
+Traditional Approach (e.g., RSA):
+
+cipher = (message ^ e) % n
+n = p * q, where p and q are large primes
+Function is public and predictable.
+Security depends on prime factorization difficulty.
+Attackers target known algorithms.
+Proposed Approach:
+
+cipher = F(message, s1, s2, ..., sn)
+F() is a custom mathematical function defined by the user.
+s1, s2, ..., sn are secret seeds.
+Structure and values are never public.
+Only decryptable if exact same function and seeds are known.
+4. How It Works
+Each user defines:
+
+A function architecture: e.g., polynomial, modular, recursive.
+A set of private seed values: e.g., integers or even functions.
+An encryption rule that transforms each data unit using the function.
+Example Function (Polynomial):
+
+F(x) = s1 * x + s2 * x^2 + s3 * x^3 + s4
+Where:
+
+x = message unit (e.g., ASCII code)
+s1, s2, s3, s4 = secret seeds
+Encryption:
+
+encrypted = F(x, s1, s2, s3, s4)
+Decryption is impossible unless:
+
+The function structure F is known
+All original seeds are known
+5. Example
+Plaintext: "A"
+ASCII: 65
+Function:
+
+F(x) = 7*x + 3*x^2 + 2*x^3 + 9
+Encryption Output:
+
+F(65) = 7*65 + 3*65^2 + 2*65^3 + 9 = encrypted_value
+Decryption: Reverse requires solving this function for x, only possible with the original structure and seeds.
+
+6. Security Advantages
+No known pattern to exploit.
+Resistant to brute force without knowing function structure.
+Scalable to use many seeds and complex transformations.
+Lightweight enough for embedded or low-resource systems.
+Flexible: can be changed per message, session, or file.
+7. Is It Production-Ready?
+YES, with precautions:
+
+Seed Management: Must be securely exchanged/stored.
+Function Storage: Architecture should be obfuscated or compiled into binary.
+Entropy: Seed values must be strong/random.
+Auditing: Formal analysis recommended for production-grade use.
+Ideal For:
+
+Secure device communication (per-device encryption).
+Custom APIs where each client has its own encryption profile.
+Post-quantum experiments and non-standard cipher research.
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+Conclusion
+This work presents:
+
+A novel method for generating number sequences free of specific divisors, without division.
+A groundbreaking cryptographic framework based on custom, seed-driven mathematical functions.
+Together, they demonstrate how mathematical creativity and unpredictability can be leveraged to improve efficiency, obfuscation, and potential future-proofing of data systems.
+
+--------------------------------------------------------------------------------------------------------------------------------------
+
+Author: Amer Alaa Eldin Attia Gomaa
+Assistant : Habib Mohamed Attia Gomaa 
+Date: May 20 2025
+Contact: ameralaah99@gmail.com
+
+
