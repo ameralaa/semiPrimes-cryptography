@@ -6,13 +6,13 @@ This repository provides Python implementations of three mathematically proven m
 > Author: Amer Alaa Eldin Attia Gomaa  
 > Date: May 20, 2025
 
-## 📌 Methods Implemented
+## Methods Implemented
 
 ### Method 1: LCM-Multiplier with Constant Offset
 Generates odd numbers of the form:  
 `f(x) = Mo × LCM + Co` or `f(x) = Me × LCM + Ce`  
 Where Co and Ce are constants such that the result is **not divisible** by any number in D.  
-✅ Corrected to always return **odd results**.
+Corrected to always return **odd results**.
 
 > Example:  
 > For D = {3, 5}, LCM = 15  
@@ -46,25 +46,27 @@ The dynamic version explores all such valid combinations.
 
 ---
 
-## 🔧 Files
+## Files
 
 | File | Description |
 |------|-------------|
-| `method1_lcm_offset_corrected.py` | Implementation of corrected Method 1 (returns only odd results) |
-| `method3_dynamic_generator.py`    | Dynamic version of Method 3 to generate multiple values |
+| `method_1.py` |  Method 1 (returns only odd results) |
+| `method_3_1.py`    | Dynamic version of Method 3 to generate all combinations values |
+  `method_3.py`    | Dynamic version of Method 3 to generate all lcm combinations values |
 | `divisor_free_generator_optimized.py` | All methods (optimized) in one script |
-| `method3_coprime_sum_fixed.py`   | Direct implementation of Method 3 with fixed parameters |
+| `method_2_1.py`   | Direct implementation of Method 2 with fixed parameters using 2 with powers|
+| `method_2.py`   | Direct implementation of Method 2 with fixed parameters using odd numbers with powers|
 
 ---
 
-## ✅ Requirements
+## Requirements
 
 - Python 3.7+
 - No external libraries required (uses only `math` and `typing`)
 
 ---
 
-## ▶️ Example Usage
+## Example Usage
 
 ```bash
 $ python method1_lcm_offset_corrected.py
@@ -73,16 +75,16 @@ Corrected Method 1 Results (Only Odd, Division-Free): [17, 31, 47, 61, 77, 91, 1
 
 ---
 
-## 📚 Reference
+## Reference
 
 This repository supports the results and theory discussed in the attached paper:  
 **A Division-Free Constructive Framework for Number Generation under Divisibility Constraints**
 
 ---
 
-## 📩 Contact
+## Contact
 
 For any inquiries or academic use:
 
-- 📧 Email: ameralaah99@gmail.com
-- 📅 Date of Publication: May 20, 2025
+- Email: ameralaah99@gmail.com
+- Date of Publication: May 20, 2025
