@@ -1,3 +1,45 @@
-This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License. 
-To view a copy of this license, visit http://creativecommons.org/licenses/by-nc/4.0/ or send a letter 
-to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+=================================================================
+LICENSE FILE FOR THIS REPOSITORY
+=================================================================
+
+This repository contains two distinct components, each governed by a different license depending on its nature and purpose. Please read carefully to understand the applicable terms of use.
+
+=================================================================
+1. Non-Divisible Number Generator Methods
+=================================================================
+
+Description:
+This part includes the concept and implementations of algorithms that generate numbers not divisible by a given number or list of numbers, both horizontally and vertically, without any division operation.
+
+License Type:
+Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
+
+Summary:
+- You may copy, modify, and distribute this work for **non-commercial** purposes only.
+- You must give appropriate credit to the original author.
+- Commercial use is **not permitted** without the author's explicit permission.
+
+Full License Text:
+https://creativecommons.org/licenses/by-nc/4.0/legalcode
+
+=================================================================
+2. Seed-Based Cryptographic Architecture
+=================================================================
+
+Description:
+This part introduces a new cryptographic method that uses user-defined functions and multiple seed values to generate encryption logic. The security depends on the uniqueness of the function architecture and seed combination, rather than standard factorization-based methods.
+
+License Type:
+All Rights Reserved
+
+Summary:
+- No part of this work may be copied, reproduced, distributed, used, or adapted without **explicit written permission** from the author.
+- Any form of use, whether personal, academic, or commercial, is strictly **prohibited** without prior approval.
+- This component is protected as intellectual property under full copyright.
+
+If you wish to request permission for access or licensing, please contact the author directly.
+
+=================================================================
+Author:
+Amer Alaa Eldin Attia Gomaa
+=================================================================
